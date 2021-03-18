@@ -1,0 +1,6 @@
+export const DISPLAY = 'DISPLAY'
+export const ARG1 = 'ARG1'
+export const ARG2 = 'ARG2'
+export const OP = 'OP'
+export const RESULT = 'RESULT'
+export const INPUT = 'INPUT'
