@@ -6,6 +6,10 @@
 
 `npm run deploy` 部署至 github page
 
+## Demo
+
+[連結](https://chou0728.github.io/react-calculator/)
+
 ## 項目結構
 
 ```javascript
