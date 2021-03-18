@@ -8,12 +8,14 @@ import NumPad from './NumPad'
 class Calculator extends Component {
   render() {
     return (
-      <div id='calculator'>
-        <Display display={this.props.display} />
-        <div className='item' id='calc-layout'>
-          <Tools />
-          <Operators />
-          <NumPad />
+      <div className='calculator-wrapper'>
+        <div className='calculator'>
+          <Display display={this.props.display} />
+          <div className='item' id='calc-layout'>
+            <Tools />
+            <Operators />
+            <NumPad />
+          </div>
         </div>
       </div>
     )

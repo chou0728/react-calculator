@@ -8,10 +8,12 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      calculatorVisible: false
+      calculatorVisible: false,
+      disabledDrag: false
     }
     this.openModal = this.openModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
+    this.disabledMobileDrag = this.disabledMobileDrag.bind(this)
   }
   openModal() {
     this.setState({ calculatorVisible: true })
@@ -21,9 +23,24 @@ class App extends Component {
     this.setState({ calculatorVisible: false })
   }
 
+  disabledMobileDrag() {
+    if (window.screen.width < 768) {
+      this.setState({ disabledDrag: true })
+      return
+    }
+    this.setState({ disabledDrag: false })
+  }
+
+  componentDidMount() {
+    this.disabledMobileDrag()
+    window.onresize = () => {
+      this.disabledMobileDrag()
+    }
+  }
+
   render() {
     return (
-      <div id='app'>
+      <div className='app'>
         <Button
           value='Open Calculator'
           style={{
@@ -34,7 +51,12 @@ class App extends Component {
           }}
           handleClick={this.openModal}
         />
-        <Modal visible={this.state.calculatorVisible} onClose={this.closeModal}>
+        <Modal
+          width={'100%'}
+          disabledDrag={this.state.disabledDrag}
+          visible={this.state.calculatorVisible}
+          onClose={this.closeModal}
+        >
           <Calculator />
         </Modal>
       </div>

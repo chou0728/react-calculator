@@ -29,7 +29,7 @@ class Modal extends Component {
   render() {
     return (
       <AntModal
-        width={360}
+        width={this.props.width}
         visible={this.props.visible}
         onCancel={this.props.onClose}
         closable={false}
@@ -37,6 +37,7 @@ class Modal extends Component {
         maskClosable={true}
         modalRender={(modal) => (
           <Draggable
+            disabled={this.props.disabledDrag}
             bounds={this.state.bounds}
             onStart={(event, uiData) => this.onStart(event, uiData)}
           >
